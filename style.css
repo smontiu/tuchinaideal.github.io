@@ -7,13 +7,45 @@
 
     #C7A76C
 */
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    height: calc(100vh - 40px);
     background: #F8F3EF;
     color: #A9513A;
+    text-align: center;
+    font-family: "Arvo", serif;
 }
+
 a {
     color: #C7A76C;
+}
+
+.arvo-regular {
+    font-family: "Arvo", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.arvo-bold {
+    font-family: "Arvo", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.arvo-regular-italic {
+    font-family: "Arvo", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.arvo-bold-italic {
+    font-family: "Arvo", serif;
+    font-weight: 700;
+    font-style: italic;
 }
