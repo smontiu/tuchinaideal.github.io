@@ -49,3 +49,8 @@ a {
     font-weight: 700;
     font-style: italic;
 }
+
+iframe {
+    width: 100%;
+    max-width: 640px;
+}
