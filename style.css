@@ -1,10 +1,18 @@
+@font-face {
+    font-family: Poppins;
+    src: url('/assets/fonts/Poppins-Regular.woff');
+}
 body {
-    font-family: "Arvo", serif;
+    font-family: "Poppins", serif;
     background: #F8F3EF;
+    overflow-x: hidden;
 }
 
 nav {
     background: #79372B;
+    color: white;
+}
+nav li {
     color: white;
 }
 
@@ -13,50 +21,20 @@ nav {
 }
 
 h2 {
-    color: #79372B;
-    font-size: 132px;
+    font-weight: bold;
+    font-size: 5em;
 }
 
-a, .cta {
-    color: #C7A76C;
-}
-.cta:hover {
-    color: white;
+h2, h3, h4, p, li {
+    color: #79372B;
 }
 
 .cta {
     padding: 20px;
     background: #79372B;
-    display: block;
-    margin: 0 auto;
-    max-width: 245px;
+    display: inline-block;
 }
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-.arvo-regular {
-    font-family: "Arvo", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.arvo-bold {
-    font-family: "Arvo", serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.arvo-regular-italic {
-    font-family: "Arvo", serif;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.arvo-bold-italic {
-    font-family: "Arvo", serif;
-    font-weight: 700;
-    font-style: italic;
+.navbar-toggler {
+    color: white;
+    border-color: white;
 }
