@@ -40,5 +40,5 @@ h2, h3, h4, p, li {
     border-color: white;
 }
 #services .cta {
-    color: white;
+    color: white !important;
 }
