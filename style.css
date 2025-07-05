@@ -7,18 +7,7 @@
 
     #C7A76C
 */
-* {
-    box-sizing: border-box;
-    user-select: none;
-}
-
 body {
-    margin: 0;
-    padding: 0 20px 20px 20px;
-    height: calc(100vh - 40px);
-    background: #F8F3EF;
-    color: #A9513A;
-    text-align: center;
     font-family: "Arvo", serif;
 }
 
@@ -48,9 +37,4 @@ a {
     font-family: "Arvo", serif;
     font-weight: 700;
     font-style: italic;
-}
-
-iframe {
-    width: 100%;
-    max-width: 640px;
 }
