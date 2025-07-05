@@ -2,6 +2,7 @@
 <html lang="es">
     <head>
         <title>Tu China Ideal</title>
+        <meta charset="utf-8">
         <meta name="title" content="Tu China Ideal" />
         <meta name="description" content="Tu viaje a China, único como tú" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
@@ -25,46 +26,97 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
         <link href="/style.css" rel="stylesheet"/>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-12W70HG21M"></script>
         <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        gtag('config', 'G-12W70HG21M');
+            gtag('config', 'G-12W70HG21M');
         </script>
     </head>
     <body>
         <div class="fluid-container">
-            <nav class="navbar fixed-top bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">
-                        <img src="/assets/logo3.png" alt="tu china ideal" class="d-inline-block align-text-top">
-                        Tu China Ideal
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand" href="#">Tu China Ideal</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                          <li class="nav-item">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
                             <a class="nav-link" href="/services/">Servicios</a>
-                          </li>
-                          <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/faq/">Dudas</a>
-                          </li>
-                          <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/contact/">Contacto</a>
-                          </li>
-                        </ul>
-                      </div>
+                        </li>
+                    </ul>
                 </div>
             </nav>
-
-            <h2>Tu viaje a China, único como tú</h2>
+            <div id="intro" class="container">
+                <div class="row g-0">
+                  <div class="col-6 mt-5 px-3">
+                    <h2 class="mb-5">Tu viaje a China, único como tú</h2>
+                    <h3 class="mb-5">Expertos en viajes personalizados a China para hispano hablantes.</h3>
+                    <a class="nav-link cta" href="/services/">Explora nuestros servicios</a>
+                  </div>
+                  <div class="col-6">
+                    <img src="/assets/bg/top.jpg" alt="" />
+                  </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-6">
+                        <img src="/assets/bg/left.jpg" alt="" />
+                    </div>
+                    <div class="col-6 mt-5 px-3">
+                        <h3>Nuestra historia y missión</h3>
+                        <h4>Quienes somos</h4>
+                        <p>Somos una pareja chino-española con un profundo vínculo con China y una pasión compartida por mostrar su lado más auténtico. Después de vivir más de una década en España y viajar varias veces a China juntos, descubrimos algo claro: para los hispano hablantes, China es un destino fascinante pero poco accesible.
+                            <br><br>Ayudamos a amigos y conocidos a planificar sus viajes, y todos coincidieron en lo mismo: “Con vuestra ayuda, vimos una China real que no aparece en los típicos tours.” Esa experiencia de viajar como locales, no como turistas, fue lo que marcó la diferencia.
+                            <br><br>Hoy queremos que más personas puedan vivir esa misma conexión, sin barreras de idioma ni miedo a lo desconocido. Por eso nace Tu China Ideal: para que descubras la riqueza de China, de forma libre, cercana y a tu manera.</p>
+                        <h4>Porqué nosotros</h4>
+                        <ul>
+                            <li>Itinerarios 100% personalizados según tus gustos y ritmo</li>
+                            <li>Asesoramiento en español antes y durante el viaje</li>
+                            <li>Trato directo y cercano: no somos una agencia masiva</li>
+                            <li>Consejos reales de quienes han vivido y viajado allí</li>
+                            <li>Apoyo para apps, transporte, cultura, y más</li>
+                            <li>Ideal para viajeros independientes que buscan algo diferente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="services">
+                <div class="row">
+                    <div class="col">
+                        <h2>Servicios</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+            <div id="services">
+                <div class="row">
+                    <div class="col">
+                        <h2>Destinos</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+        <script type="module" src="/assets/cookieconsent-config.js"></script>
     </body>
 </html>

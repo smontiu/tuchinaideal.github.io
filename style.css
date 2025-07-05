@@ -1,18 +1,40 @@
-/*
-    #A9513A
-
-    #79372B
-
-    #F8F3EF
-
-    #C7A76C
-*/
 body {
     font-family: "Arvo", serif;
+    background: #F8F3EF;
 }
 
-a {
+nav {
+    background: #79372B;
+    color: white;
+}
+
+.nav-link, .navbar-brand {
+    color: white;
+}
+
+h2 {
+    color: #79372B;
+    font-size: 132px;
+}
+
+a, .cta {
     color: #C7A76C;
+}
+.cta:hover {
+    color: white;
+}
+
+.cta {
+    padding: 20px;
+    background: #79372B;
+    display: block;
+    margin: 0 auto;
+    max-width: 245px;
+}
+
+img {
+    width: 100%;
+    height: auto;
 }
 
 .arvo-regular {
