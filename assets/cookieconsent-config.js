@@ -28,11 +28,11 @@ CookieConsent.run({
             en: {
                 consentModal: {
                     title: "Hello traveller, it's cookie time!",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+                    description: "We use cookies to improve your experience, analyze traffic, and personalize content. You can choose which categories to accept or reject. For more details, see our policies.",
                     acceptAllBtn: "Accept all",
                     acceptNecessaryBtn: "Reject all",
                     showPreferencesBtn: "Manage preferences",
-                    footer: "<a href=\"#link\">Privacy Policy</a>\n<a href=\"#link\">Terms and conditions</a>"
+                    footer: "<a href=\"/policy/\">Privacy Policy</a>\n<a href=\"/terms/\">Terms and Conditions</a>"
                 },
                 preferencesModal: {
                     title: "Consent Preferences Center",
@@ -44,36 +44,36 @@ CookieConsent.run({
                     sections: [
                         {
                             title: "Cookie Usage",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            description: "We use cookies to ensure the website works properly, to understand how you interact with it, and to tailor our services to your interests."
                         },
                         {
                             title: "Strictly Necessary Cookies <span class=\"pm__badge\">Always Enabled</span>",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            description: "These cookies are essential for the website to function and cannot be disabled. They are usually set in response to your actions, such as setting privacy preferences or filling out forms.",
                             linkedCategory: "necessary"
                         },
                         {
                             title: "Analytics Cookies",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            description: "These cookies help us understand how visitors interact with the website, so we can improve it. All data is collected anonymously.",
                             linkedCategory: "analytics"
                         },
                         {
                             title: "More information",
-                            description: "For any query in relation to my policy on cookies and your choices, please <a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."
+                            description: "For any questions about our cookie policy and your choices, please <a class=\"cc__link\" href=\"mailto:contacto@tuchinalideal.com\">contact us</a>."
                         }
                     ]
                 }
             },
             es: {
                 consentModal: {
-                    title: "Hola viajero, es la hora de las galletas!",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+                    title: "Hola viajero, ¡es hora de las cookies!",
+                    description: "Usamos cookies para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. Puedes elegir qué categorías aceptar o rechazar. Para más información, consulta nuestras políticas.",
                     acceptAllBtn: "Aceptar todo",
                     acceptNecessaryBtn: "Rechazar todo",
                     showPreferencesBtn: "Gestionar preferencias",
-                    footer: "<a href=\"#link\">Política de privacidad</a>\n<a href=\"#link\">Términos y condiciones</a>"
+                    footer: "<a href=\"/policy/\">Política de privacidad</a>\n<a href=\"/terms/\">Términos y condiciones</a>"
                 },
                 preferencesModal: {
-                    title: "Preferencias de Consentimiento",
+                    title: "Centro de Preferencias de Consentimiento",
                     acceptAllBtn: "Aceptar todo",
                     acceptNecessaryBtn: "Rechazar todo",
                     savePreferencesBtn: "Guardar preferencias",
@@ -82,21 +82,21 @@ CookieConsent.run({
                     sections: [
                         {
                             title: "Uso de Cookies",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            description: "Utilizamos cookies para garantizar el correcto funcionamiento del sitio web, comprender cómo interactúas con él y adaptar nuestros servicios a tus intereses."
                         },
                         {
-                            title: "Cookies Estrictamente Necesarias <span class=\"pm__badge\">Siempre Habilitado</span>",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            title: "Cookies estrictamente necesarias <span class=\"pm__badge\">Siempre habilitadas</span>",
+                            description: "Estas cookies son esenciales para que el sitio funcione y no se pueden desactivar. Normalmente se configuran en respuesta a tus acciones, como establecer preferencias de privacidad o rellenar formularios.",
                             linkedCategory: "necessary"
                         },
                         {
-                            title: "Cookies Analíticas",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            title: "Cookies de análisis",
+                            description: "Estas cookies nos ayudan a entender cómo los visitantes usan el sitio web, para poder mejorarlo. Todos los datos se recopilan de forma anónima.",
                             linkedCategory: "analytics"
                         },
                         {
                             title: "Más información",
-                            description: "For any query in relation to my policy on cookies and your choices, please <a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."
+                            description: "Si tienes preguntas sobre nuestra política de cookies y tus opciones, por favor <a class=\"cc__link\" href=\"mailto:contacto@tuchinalideal.com\">contáctanos</a>."
                         }
                     ]
                 }
