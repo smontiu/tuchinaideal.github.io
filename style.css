@@ -25,7 +25,7 @@ h2 {
     font-size: 5em;
 }
 
-h2, h3, h4, p, li {
+h2, h3, h4, p, li, #intro h1 {
     color: #79372B;
 }
 
@@ -35,6 +35,7 @@ h2, h3, h4, p, li {
     display: inline-block;
     text-decoration: none;
 }
+
 .navbar-toggler {
     color: white;
     border-color: white;
