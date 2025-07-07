@@ -25,7 +25,7 @@ nav li {
     font-size: 5em;
 }
 
-.main-title, h2, h3, h4, p, li, #intro h1, #contact h1, #services h1, #services h3 {
+.main-title, h2, h3, h4, p, li, #intro h1, #contact h1, #services h1, #services h3, #destinations h3 {
     color: #79372B;
 }
 
@@ -43,6 +43,13 @@ nav li {
 #services .cta, #contact .cta {
     color: white !important;
 }
+
+.carousel-item img {  
+    object-fit: contain;
+    object-position: center;
+    overflow: hidden;
+    height: 50vh;
+  }
 
 @media screen and (max-width: 500px) {
     .main-title {
