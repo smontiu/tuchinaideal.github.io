@@ -258,9 +258,7 @@
             gtag('config', 'G-12W70HG21M');
         </script>
         <script>
-            document.querySelectorAll('.cta').forEach(btn => addEventListener('click', function() {
-                document.querySelector('#planType').value = btn.dataset.planType;
-            }));
+            document.querySelectorAll('.cta').forEach(btn => btn.addEventListener('click', () => document.querySelector('#planType').value = btn.dataset.planType));
         </script>
     </body>
 </html>
