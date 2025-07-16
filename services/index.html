@@ -57,7 +57,7 @@
                             <div class="card-body">
                               <h3 class="card-title">China fácil</h3>
                               <p class="card-text">Lo esencial para explorar China por tu cuenta, con guía en español y plan personalizado.</p>
-                              <a data-bs-toggle="modal" data-planType="1" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
+                              <a data-bs-toggle="modal" data-plan-type="1" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                             <div class="card-body">
                               <h3 class="card-title">China a tu medida</h3>
                               <p class="card-text">Itinerario completo con recomendaciones de hoteles, transporte y cultura, adaptado totalmente a ti.</p>
-                              <a data-bs-toggle="modal" data-planType="2" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
+                              <a data-bs-toggle="modal" data-plan-type="2" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
                             </div>
                           </div>
                     </div>
@@ -77,7 +77,7 @@
                             <div class="card-body">
                               <h3 class="card-title">China sin barreras</h3>
                               <p class="card-text">Planificación total + asistencia en viaje para descubrir China sin complicaciones.</p>
-                              <a data-bs-toggle="modal" data-planType="3" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
+                              <a data-bs-toggle="modal" data-plan-type="3" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
                             </div>
                           </div>
                     </div>
@@ -258,9 +258,9 @@
             gtag('config', 'G-12W70HG21M');
         </script>
         <script>
-            document.querySelectorAll('.cta').addEventListener('click', function(ev) {
-                document.querySelector('#planType').value = ev.target.dataset.planType;
-            })
+            document.querySelectorAll('.cta').forEach(btn => addEventListener('click', function() {
+                document.querySelector('#planType').value = btn.dataset.planType;
+            }));
         </script>
     </body>
 </html>
