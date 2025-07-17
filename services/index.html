@@ -212,17 +212,23 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title">Contacto</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <h5 class="modal-title">Empieza tu aventura</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="cerrar"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="https://us-central1-tuchinaideal-39067.cloudfunctions.net/addInitialContact" method="POST">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email">
+                        <form class="text-center" action="https://addinitialcontact-dw7hnfhfsq-uc.a.run.app" method="POST">
+                            <div class="mb-3 text-start">
                                 <input id="planType" type="hidden" class="form-control" name="plan" value="">
+                                <label for="email" class="form-label">Email</label>
+                                <input id="email" type="email" class="form-control" name="email">
+                                <label for="duration" class="mt-3 form-label">Duración del viaje</label>
+                                <select id="duration" name="duration" class="form-select" aria-label="Duración del viajes">
+                                    <option value="7">Hasta 7 días</option>
+                                    <option value="14">Hasta 14 días</option>
+                                    <option value="15">15 días o más</option>
+                                </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button style="border: none;color: white;" type="submit" class="cta">Enviar</button>
                         </form>
                     </div>
                   </div>
@@ -258,7 +264,7 @@
             gtag('config', 'G-12W70HG21M');
         </script>
         <script>
-            document.querySelectorAll('.cta').forEach(btn => btn.addEventListener('click', () => document.querySelector('#planType').value = btn.dataset.planType));
+            document.querySelectorAll('a.cta').forEach(btn => btn.addEventListener('click', () => document.querySelector('#planType').value = btn.dataset.planType));
         </script>
     </body>
 </html>

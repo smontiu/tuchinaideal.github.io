@@ -28,9 +28,37 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
     const msg = {
       to: email,
       from: 'info@tuchinaideal.com',
-      subject: 'Test tuchinaideal',
-      text: 'test content',
-      html: '<strong>html test content</strong>',
+      subject: 'TuChinaIdeal - Comienza tu aventura',
+      templateId: 'd-39759bdf93fa4799868903c99fc6f1ab',
+      dynamicTemplateData: {
+        duration: {
+          7: 'Hasta 7 días',
+          14: 'Hasta 14 días',
+          15: '15 días o más'
+        }[duration],
+        amount: {
+          1: {
+            7: '69 €',
+            14: '99 €',
+            15: '129 €'
+          },
+          2: {
+            7: '139 €',
+            14: '169 €',
+            15: '199 €'
+          },
+          3: {
+            7: '209 €',
+            14: '259 €',
+            15: '299 €'
+          }
+        }[plan][duration],
+        plan: {
+          1: 'China fácil',
+          2: 'China a tu medida',
+          3: 'China sin barreras'
+        }[plan]
+      }
     };
     if (email) {
       await sgMail.send(msg);
