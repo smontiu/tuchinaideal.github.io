@@ -9,11 +9,11 @@ const {getFirestore} = require('firebase-admin/firestore');
 setGlobalOptions({ maxInstances: 1 });
 initializeApp();
 
-sgMail.setApiKey(process.env.SENDGRID);
-
 exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req, res) => {
   try {
     const { email = '', duration = 0, fullName = '', nationality = '', plan = 1 } = req.body;
+
+    sgMail.setApiKey(process.env.SENDGRID);
    await getFirestore()
       .collection('leads')
       .add({
@@ -27,7 +27,7 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
     
     const msg = {
       to: email,
-      from: 'tuchinaideal@gmail.com',
+      from: 'info@tuchinaideal.com',
       subject: 'Test tuchinaideal',
       text: 'test content',
       html: '<strong>html test content</strong>',
