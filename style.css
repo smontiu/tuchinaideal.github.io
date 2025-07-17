@@ -20,6 +20,10 @@ nav li {
     color: white;
 }
 
+.card .nav-link {
+    color: #79372B;
+}
+
 .main-title {
     font-weight: bold;
     font-size: 5em;
