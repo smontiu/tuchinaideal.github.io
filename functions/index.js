@@ -14,7 +14,7 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
     const { email = '', duration = 0, fullName = '', nationality = '', plan = 1 } = req.body;
 
     sgMail.setApiKey(process.env.SENDGRID);
-   await getFirestore()
+    await getFirestore()
       .collection('leads')
       .add({
         email,
@@ -24,44 +24,56 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
         plan,
         createdAt: +new Date()
       });
+
+    const mapPlan = {
+      1: 'China fácil',
+      2: 'China a tu medida',
+      3: 'China sin barreras'
+    }[plan];
+    const mapAmount = {
+      1: {
+        7: '69 €',
+        14: '99 €',
+        15: '129 €'
+      },
+      2: {
+        7: '139 €',
+        14: '169 €',
+        15: '199 €'
+      },
+      3: {
+        7: '209 €',
+        14: '259 €',
+        15: '299 €'
+      }
+    }[plan][duration];
+    const mapDuration = {
+      7: 'Hasta 7 días',
+      14: 'Hasta 14 días',
+      15: '15 días o más'
+    }[duration];
     
     const msg = {
       to: email,
       from: 'info@tuchinaideal.com',
+      replyTo: 'info@tuchinaideal.com',
       subject: 'TuChinaIdeal - Comienza tu aventura',
       templateId: 'd-39759bdf93fa4799868903c99fc6f1ab',
       dynamicTemplateData: {
-        duration: {
-          7: 'Hasta 7 días',
-          14: 'Hasta 14 días',
-          15: '15 días o más'
-        }[duration],
-        amount: {
-          1: {
-            7: '69 €',
-            14: '99 €',
-            15: '129 €'
-          },
-          2: {
-            7: '139 €',
-            14: '169 €',
-            15: '199 €'
-          },
-          3: {
-            7: '209 €',
-            14: '259 €',
-            15: '299 €'
-          }
-        }[plan][duration],
-        plan: {
-          1: 'China fácil',
-          2: 'China a tu medida',
-          3: 'China sin barreras'
-        }[plan]
+        duration: mapDuration,
+        amount: mapAmount,
+        plan: mapPlan
       }
+    };
+    const msgInternal = {
+      to: 'tuchinaideal@gmail.com',
+      from: 'info@tuchinaideal.com',
+      subject: 'New lead',
+      html: `<h1>New lead</h1><p>email: ${email}</p><p>plan: ${mapPlan}</p><p>amount: ${mapAmount}</p><p>duration: ${mapDuration}</p>`
     };
     if (email) {
       await sgMail.send(msg);
+      await sgMail.send(msgInternal);
     }
     logger.info('[addInitialContact] lead added', { structuredData: true });
     res.redirect('https://tuchinaideal.com/thanks')
