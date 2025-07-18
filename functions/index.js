@@ -2,6 +2,7 @@ const {setGlobalOptions} = require('firebase-functions');
 const { onRequest } = require('firebase-functions/v2/https');
 const logger = require('firebase-functions/logger');
 const sgMail = require('@sendgrid/mail');
+const nanoid = require('nanoid');
 
 const {initializeApp} = require('firebase-admin/app');
 const {getFirestore} = require('firebase-admin/firestore');
@@ -12,6 +13,7 @@ initializeApp();
 exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req, res) => {
   try {
     const { email = '', duration = 0, fullName = '', nationality = '', plan = 1 } = req.body;
+    const reference = nanoid(10);
 
     sgMail.setApiKey(process.env.SENDGRID);
     await getFirestore()
@@ -22,6 +24,7 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
         fullName,
         nationality,
         plan,
+        reference,
         createdAt: +new Date()
       });
 
@@ -62,23 +65,46 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
       dynamicTemplateData: {
         duration: mapDuration,
         amount: mapAmount,
-        plan: mapPlan
+        plan: mapPlan,
+        reference
       }
     };
     const msgInternal = {
       to: 'tuchinaideal@gmail.com',
       from: 'info@tuchinaideal.com',
       subject: 'New lead',
-      html: `<h1>New lead</h1><p>email: ${email}</p><p>plan: ${mapPlan}</p><p>amount: ${mapAmount}</p><p>duration: ${mapDuration}</p>`
+      html: `<h1>New lead</h1><p>email: ${email}</p><p>plan: ${mapPlan}</p><p>amount: ${mapAmount}</p><p>duration: ${mapDuration}</p><p>booking reference: ${reference}</p>`
     };
     if (email) {
       await sgMail.send(msg);
       await sgMail.send(msgInternal);
     }
     logger.info('[addInitialContact] lead added', { structuredData: true });
-    res.redirect('https://tuchinaideal.com/thanks')
+    res.redirect('https://tuchinaideal.com/thanks');
   } catch(err) {
     logger.error('[addInitialContact] lead err', { err, structuredData: true });
+    res.status(500).send();
+  }
+});
+
+exports.contactForm = onRequest({ cors: ['tuchinaideal.com'] }, async (req, res) => {
+  try {
+    const { email = '', content = '' } = req.body;
+
+    sgMail.setApiKey(process.env.SENDGRID);
+    const msgInternal = {
+      to: 'tuchinaideal@gmail.com',
+      from: 'info@tuchinaideal.com',
+      subject: 'New contact',
+      html: `<h1>New Contact from landing</h1><p>email: ${email}</p><p>content: ${content}</p>`
+    };
+    if (email && content) {
+      await sgMail.send(msgInternal);
+    }
+    logger.info('[contactForm] contact', { structuredData: true });
+    res.redirect('https://tuchinaideal.com/thanks');
+  } catch(err) {
+    logger.error('[contactForm] contact err', { err, structuredData: true });
     res.status(500).send();
   }
 });

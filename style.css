@@ -20,6 +20,10 @@ nav li {
     color: white;
 }
 
+#services .nav-link {
+    text-decoration: underline;
+}
+
 .card .nav-link {
     color: #79372B;
 }

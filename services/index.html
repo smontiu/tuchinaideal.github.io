@@ -24,6 +24,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
         <link href="/style.css" rel="stylesheet"/>
+        <script>
+            function handleSubmit() {
+                document.querySelectorAll('.spinner-border')[0].hidden = false;
+            }
+        </script>
     </head>
     <body>
         <div class="fluid-container">
@@ -57,6 +62,7 @@
                             <div class="card-body">
                               <h3 class="card-title"><a class="nav-link" href="/services/china-facil/">China fácil</a></h3>
                               <p class="card-text">Lo esencial para explorar China por tu cuenta, con guía en español y plan personalizado.</p>
+                              <p class="card-text">69 € - 209 €</p>
                               <a data-bs-toggle="modal" data-plan-type="1" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
                             </div>
                         </div>
@@ -67,6 +73,7 @@
                             <div class="card-body">
                               <h3 class="card-title"><a class="nav-link" href="/services/china-a-tu-medida/">China a tu medida</a></h3>
                               <p class="card-text">Itinerario completo con recomendaciones de hoteles, transporte y cultura, adaptado totalmente a ti.</p>
+                              <p class="card-text">99 € - 259 €</p>
                               <a data-bs-toggle="modal" data-plan-type="2" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
                             </div>
                           </div>
@@ -77,135 +84,11 @@
                             <div class="card-body">
                               <h3 class="card-title"><a class="nav-link" href="/services/china-sin-barreras/">China sin barreras</a></h3>
                               <p class="card-text">Planificación total + asistencia en viaje para descubrir China sin complicaciones.</p>
+                              <p class="card-text">129 € - 299 €</p>
                               <a data-bs-toggle="modal" data-plan-type="3" data-bs-target="#plan" class="cta align-bottom">Reserva ahora</a>
                             </div>
                           </div>
                     </div>
-                </div>
-                <div class="row">
-                    <table class="table table-bordered table-striped">
-                        <thead class="thead-dark">
-                          <tr>
-                            <th>Pack</th>
-                            <th>Hasta 7 días</th>
-                            <th>Hasta 14 días</th>
-                            <th>15+ días</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>China fácil</td>
-                            <td>69 €</td>
-                            <td>99 €</td>
-                            <td>129 €</td>
-                          </tr>
-                          <tr>
-                            <td>China a tu medida</td>
-                            <td>139 €</td>
-                            <td>169 €</td>
-                            <td>199 €</td>
-                          </tr>
-                          <tr>
-                            <td>China sin barreras</td>
-                            <td>209 €</td>
-                            <td>259 €</td>
-                            <td>299 €</td>
-                          </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <h2 class="mb-4">Comparativa de Paquetes de Viaje a China</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped align-middle">
-                        <thead class="table-dark">
-                        <tr>
-                            <th>Pack</th>
-                            <th>China fácil</th>
-                            <th>China a tu medida</th>
-                            <th>China sin barreras</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Cuestionario</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Videollamada 1:1 en español</td>
-                            <td>✅ (30 min antes del viaje)</td>
-                            <td>✅ (45 min antes del viaje)</td>
-                            <td>✅ (2 llamadas: antes y después de la planificación)</td>
-                        </tr>
-                        <tr>
-                            <td>Plan de viaje en PDF + Mapa</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Guía de frases en mandarín y hoja QR (PDF)</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Guía previa al viaje (Visado, Apps, Cultura)</td>
-                            <td>✅ (General)</td>
-                            <td>✅ (Detallada)</td>
-                            <td>✅ (Detallada con recordatorio)</td>
-                        </tr>
-                        <tr>
-                            <td>Entradas</td>
-                            <td>❌</td>
-                            <td>✅ (Recomendación de app)</td>
-                            <td>✅ (Explicación detallada paso a paso en la app)</td>
-                        </tr>
-                        <tr>
-                            <td>Transporte</td>
-                            <td>❌</td>
-                            <td>✅ (Recomendación)</td>
-                            <td>✅ (Recomendación con enlace de reserva pero sin reservar)</td>
-                        </tr>
-                        <tr>
-                            <td>Alojamiento</td>
-                            <td>❌</td>
-                            <td>✅ (Recomendación)</td>
-                            <td>✅ (Recomendación con enlace de reserva pero sin reservar)</td>
-                        </tr>
-                        <tr>
-                            <td>Restaurantes y actividades locales</td>
-                            <td>❌</td>
-                            <td>✅ (Recomendación)</td>
-                            <td>✅ (Recomendación con enlace de reserva pero sin reservar)</td>
-                        </tr>
-                        <tr>
-                            <td>Revisión (14 días antes del viaje)</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Soporte de emergencia durante el viaje</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅ (Mensajes WeChat, horario laboral)</td>
-                        </tr>
-                        <tr>
-                            <td>Kit de viaje (digital/físico)</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Tutorial de apps chinas (video)</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>✅ Personalizado</td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
             <div class="modal fade" id="plan" aria-labelledby="Nuevo registro" aria-hidden="true" tabindex="-1">
@@ -228,7 +111,9 @@
                                     <option value="15">15 días o más</option>
                                 </select>
                             </div>
-                            <button style="border: none;color: white;" type="submit" class="cta">Enviar</button>
+                            <button onclick="handleSubmit()" style="border: none;color: white;" type="submit" class="cta"><div class="spinner-border" hidden role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div><br/>Enviar</button>
                         </form>
                     </div>
                   </div>
@@ -266,6 +151,9 @@
         </script>
         <script>
             document.querySelectorAll('a.cta').forEach(btn => btn.addEventListener('click', () => document.querySelector('#planType').value = btn.dataset.planType));
+            function handleSubmit() {
+                document.querySelectorAll('.spinner-border')[0].hidden = false;
+            }
         </script>
     </body>
 </html>
