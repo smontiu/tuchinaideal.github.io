@@ -26,7 +26,11 @@
         <link href="/style.css" rel="stylesheet"/>
         <script>
             function handleSubmit() {
-                document.querySelectorAll('.spinner-border')[0].hidden = false;
+                const ff = document.querySelectorAll('form')[0];
+
+                if (ff.checkValidity()) {
+                    document.querySelectorAll('.spinner-border')[0].hidden = false;
+                }
             }
         </script>
     </head>
@@ -87,13 +91,19 @@
                                 <div class="mb-3 text-start">
                                     <input id="planType" type="hidden" class="form-control" name="plan" value="2">
                                     <label for="email" class="form-label">Email</label>
-                                    <input id="email" type="email" class="form-control" name="email">
+                                    <input required id="email" type="email" class="form-control" name="email">
                                     <label for="duration" class="mt-3 form-label">Duración del viaje</label>
-                                    <select id="duration" name="duration" class="form-select" aria-label="Duración del viajes">
+                                    <select required id="duration" name="duration" class="form-select" aria-label="Duración del viajes">
                                         <option value="7">Hasta 7 días</option>
                                         <option value="14">Hasta 14 días</option>
                                         <option value="15">15 días o más</option>
                                     </select>
+                                    <div class="form-check mt-3">
+                                        <input required class="form-check-input" type="checkbox" name="privacyCheck" value="" id="policy">
+                                        <label class="form-check-label" for="policy">
+                                            Acepto el tratamiento de mis datos personales para recibir una respuesta, según la <a href="/policy/" target="_blank">Política de Privacidad</a>.
+                                        </label>
+                                    </div>
                                 </div>
                                 <button onclick="handleSubmit()" style="border: none;color: white;" type="submit" class="cta">Enviar<div class="spinner-border" hidden role="status">
                                     <span class="visually-hidden">Cargando...</span>

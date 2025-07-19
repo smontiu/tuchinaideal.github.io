@@ -2,7 +2,7 @@ const {setGlobalOptions} = require('firebase-functions');
 const { onRequest } = require('firebase-functions/v2/https');
 const logger = require('firebase-functions/logger');
 const sgMail = require('@sendgrid/mail');
-const nanoid = require('nanoid');
+const { customAlphabet } = require('nanoid');
 
 const {initializeApp} = require('firebase-admin/app');
 const {getFirestore} = require('firebase-admin/firestore');
@@ -12,8 +12,9 @@ initializeApp();
 
 exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req, res) => {
   try {
-    const { email = '', duration = 0, fullName = '', nationality = '', plan = 1 } = req.body;
-    const reference = nanoid(10);
+    const { email = '', duration = 0, fullName = '', nationality = '', plan = 1, privacyCheck = false } = req.body;
+    const seed = customAlphabet('1234567890abcdefghijklmnoprsqwzxy', 10);
+    const reference = seed();
 
     sgMail.setApiKey(process.env.SENDGRID);
     await getFirestore()
@@ -25,6 +26,7 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
         nationality,
         plan,
         reference,
+        privacyCheck,
         createdAt: +new Date()
       });
 
@@ -32,7 +34,7 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
       1: 'China fácil',
       2: 'China a tu medida',
       3: 'China sin barreras'
-    }[plan];
+    }[plan] || '';
     const mapAmount = {
       1: {
         7: '69 €',
@@ -49,12 +51,12 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
         14: '259 €',
         15: '299 €'
       }
-    }[plan][duration];
+    }[plan][duration] || '';
     const mapDuration = {
       7: 'Hasta 7 días',
       14: 'Hasta 14 días',
       15: '15 días o más'
-    }[duration];
+    }[duration] || '';
     
     const msg = {
       to: email,

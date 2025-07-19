@@ -24,6 +24,19 @@ nav li {
     text-decoration: underline;
 }
 
+.modal button.cta {
+    border: none;
+    color: white;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.form-check a {
+    color: #79372B;
+}
+
 .card .nav-link {
     color: #79372B;
 }
