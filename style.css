@@ -24,7 +24,7 @@ nav li {
     text-decoration: underline;
 }
 
-.modal button.cta {
+#contact button.cta, .modal button.cta {
     border: none;
     color: white;
     display: flex;
