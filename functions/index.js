@@ -17,18 +17,20 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
     const reference = seed();
 
     sgMail.setApiKey(process.env.SENDGRID);
-    await getFirestore()
-      .collection('leads')
-      .add({
-        email,
-        duration,
-        fullName,
-        nationality,
-        plan,
-        reference,
-        privacyCheck,
-        createdAt: +new Date()
-      });
+    if (email) {
+      await getFirestore()
+        .collection('leads')
+        .add({
+          email,
+          duration,
+          fullName,
+          nationality,
+          plan,
+          reference,
+          privacyCheck,
+          createdAt: +new Date()
+        });
+    }
 
     const mapPlan = {
       1: 'China fácil',
