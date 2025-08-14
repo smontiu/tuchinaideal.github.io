@@ -35,7 +35,8 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
     const mapPlan = {
       1: 'China fácil',
       2: 'China a tu medida',
-      3: 'China sin barreras'
+      3: 'China sin barreras',
+      4: 'China express'
     }[plan] || '';
     const mapAmount = {
       1: {
@@ -52,6 +53,11 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
         7: '209 €',
         14: '259 €',
         15: '299 €'
+      },
+      4: {
+        7: '40 € / 46 $',
+        14: '40 € / 46 $',
+        15: '40 € / 46 $'
       }
     }[plan][duration] || '';
     const mapDuration = {
@@ -59,6 +65,8 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
       14: 'Hasta 14 días',
       15: '15 días o más'
     }[duration] || '';
+
+    const dur = plan === '4' ? '1 hora' : mapDuration;
     
     const msg = {
       to: email,
@@ -67,7 +75,7 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
       subject: 'TuChinaIdeal - Comienza tu aventura',
       templateId: 'd-39759bdf93fa4799868903c99fc6f1ab',
       dynamicTemplateData: {
-        duration: mapDuration,
+        duration: dur,
         amount: mapAmount,
         plan: mapPlan,
         reference
@@ -77,7 +85,7 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
       to: 'tuchinaideal@gmail.com',
       from: 'info@tuchinaideal.com',
       subject: 'New lead',
-      html: `<h1>New lead</h1><p>email: ${email}</p><p>plan: ${mapPlan}</p><p>amount: ${mapAmount}</p><p>duration: ${mapDuration}</p><p>booking reference: ${reference}</p>`
+      html: `<h1>New lead</h1><p>email: ${email}</p><p>plan: ${mapPlan}</p><p>amount: ${mapAmount}</p><p>duration: ${dur}</p><p>booking reference: ${reference}</p>`
     };
     if (email) {
       await sgMail.send(msg);
