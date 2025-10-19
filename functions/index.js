@@ -1,7 +1,7 @@
 const {setGlobalOptions} = require('firebase-functions');
 const { onRequest } = require('firebase-functions/v2/https');
 const logger = require('firebase-functions/logger');
-const sgMail = require('@sendgrid/mail');
+const { TransactionalEmailsApi, SendSmtpEmail } = require('@getbrevo/brevo');
 const { customAlphabet } = require('nanoid');
 
 const {initializeApp} = require('firebase-admin/app');
@@ -16,7 +16,9 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
     const seed = customAlphabet('1234567890abcdefghijklmnoprsqwzxy', 10);
     const reference = seed();
 
-    sgMail.setApiKey(process.env.SENDGRID);
+    const emailAPI = new TransactionalEmailsApi();
+    
+    emailAPI.authentications.apiKey.apiKey = process.env.BREVO;
     if (email) {
       await getFirestore()
         .collection('leads')
@@ -68,28 +70,26 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
 
     const dur = plan === '4' ? '1 hora' : mapDuration;
     
-    const msg = {
-      to: email,
-      from: 'info@tuchinaideal.com',
-      replyTo: 'info@tuchinaideal.com',
-      subject: 'TuChinaIdeal - Comienza tu aventura',
-      templateId: 'd-39759bdf93fa4799868903c99fc6f1ab',
-      dynamicTemplateData: {
-        duration: dur,
-        amount: mapAmount,
-        plan: mapPlan,
-        reference
-      }
+    const msg = new SendSmtpEmail();
+    msg.to = { email };
+    msg.from = { email: 'info@tuchinaideal.com' };
+    msg.templateId = 1;
+    msg.subject = 'TuChinaIdeal - Comienza tu aventura';
+    msg.params = {
+      duration: dur,
+      amount: mapAmount,
+      plan: mapPlan,
+      reference
     };
-    const msgInternal = {
-      to: 'tuchinaideal@gmail.com',
-      from: 'info@tuchinaideal.com',
-      subject: 'New lead',
-      html: `<h1>New lead</h1><p>email: ${email}</p><p>plan: ${mapPlan}</p><p>amount: ${mapAmount}</p><p>duration: ${dur}</p><p>booking reference: ${reference}</p>`
-    };
+    const msgInternal = new SendSmtpEmail();
+    msgInternal.to = { email: 'tuchinaideal@gmail.com' };
+    msgInternal.sender = { email: 'info@tuchinaideal.com' };
+    msgInternal.subject = 'New lead';
+    msgInternal.htmlContent = `<h1>New lead</h1><p>email: ${email}</p><p>plan: ${mapPlan}</p><p>amount: ${mapAmount}</p><p>duration: ${dur}</p><p>booking reference: ${reference}</p>`;
+
     if (email) {
-      await sgMail.send(msg);
-      await sgMail.send(msgInternal);
+      await emailAPI.sendTransacEmail(msg);
+      await emailAPI.sendTransacEmail(msgInternal);
     }
     logger.info('[addInitialContact] lead added', { structuredData: true });
     res.redirect('https://tuchinaideal.com/thanks');
@@ -102,16 +102,17 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
 exports.contactForm = onRequest({ cors: ['tuchinaideal.com'] }, async (req, res) => {
   try {
     const { email = '', content = '' } = req.body;
+    const emailAPI = new TransactionalEmailsApi();
+    emailAPI.authentications.apiKey.apiKey = process.env.BREVO;
+    const msgInternal = new SendSmtpEmail();
 
-    sgMail.setApiKey(process.env.SENDGRID);
-    const msgInternal = {
-      to: 'tuchinaideal@gmail.com',
-      from: 'info@tuchinaideal.com',
-      subject: 'New contact',
-      html: `<h1>New Contact from landing</h1><p>email: ${email}</p><p>content: ${content}</p>`
-    };
+    msgInternal.to = { email: 'tuchinaideal@gmail.com' };
+    msgInternal.sender = { email: 'info@tuchinaideal.com' };
+    msgInternal.subject = 'New contact';
+    msgInternal.htmlContent = `<h1>New Contact from landing</h1><p>email: ${email}</p><p>content: ${content}</p>`;
+
     if (email && content) {
-      await sgMail.send(msgInternal);
+      await emailAPI.sendTransacEmail(msgInternal);
     }
     logger.info('[contactForm] contact', { structuredData: true });
     res.redirect('https://tuchinaideal.com/thanks');
