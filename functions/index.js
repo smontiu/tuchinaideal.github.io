@@ -19,6 +19,7 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
     const emailAPI = new TransactionalEmailsApi();
     
     emailAPI.authentications.apiKey.apiKey = process.env.BREVO;
+
     if (email) {
       await getFirestore()
         .collection('leads')
@@ -71,8 +72,8 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
     const dur = plan === '4' ? '1 hora' : mapDuration;
     
     const msg = new SendSmtpEmail();
-    msg.to = { email };
-    msg.from = { email: 'info@tuchinaideal.com' };
+    msg.to = [{ email }];
+    msg.sender = { email: 'info@tuchinaideal.com', name: 'Tu China Ideal' };
     msg.templateId = 1;
     msg.subject = 'TuChinaIdeal - Comienza tu aventura';
     msg.params = {
@@ -82,8 +83,8 @@ exports.addInitialContact = onRequest({ cors: ['tuchinaideal.com'] }, async (req
       reference
     };
     const msgInternal = new SendSmtpEmail();
-    msgInternal.to = { email: 'tuchinaideal@gmail.com' };
-    msgInternal.sender = { email: 'info@tuchinaideal.com' };
+    msgInternal.to = [{ email: 'tuchinaideal@gmail.com' }];
+    msgInternal.sender = { email: 'info@tuchinaideal.com', name: 'Tu China Ideal' };
     msgInternal.subject = 'New lead';
     msgInternal.htmlContent = `<h1>New lead</h1><p>email: ${email}</p><p>plan: ${mapPlan}</p><p>amount: ${mapAmount}</p><p>duration: ${dur}</p><p>booking reference: ${reference}</p>`;
 
@@ -103,11 +104,11 @@ exports.contactForm = onRequest({ cors: ['tuchinaideal.com'] }, async (req, res)
   try {
     const { email = '', content = '' } = req.body;
     const emailAPI = new TransactionalEmailsApi();
-    emailAPI.authentications.apiKey.apiKey = process.env.BREVO;
     const msgInternal = new SendSmtpEmail();
 
-    msgInternal.to = { email: 'tuchinaideal@gmail.com' };
-    msgInternal.sender = { email: 'info@tuchinaideal.com' };
+    emailAPI.authentications.apiKey.apiKey = process.env.BREVO;
+    msgInternal.to = [{ email: 'tuchinaideal@gmail.com' }];
+    msgInternal.sender = { email: 'info@tuchinaideal.com', name: 'Tu China Ideal' };
     msgInternal.subject = 'New contact';
     msgInternal.htmlContent = `<h1>New Contact from landing</h1><p>email: ${email}</p><p>content: ${content}</p>`;
 
