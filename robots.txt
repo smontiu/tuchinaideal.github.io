@@ -1,6 +1,6 @@
 User-agent: *
 Disallow: /thanks
 Disallow: /policy
-Disallow: /terns
+Disallow: /terms
 Allow: /
 Sitemap: https://www.tuchinaideal.com/sitemap.xml
